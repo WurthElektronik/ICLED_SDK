@@ -17,7 +17,7 @@ Here are the salient features of the WE ICLED SDK.
 
 * **Install IDE**: Use your favourite development IDE (we recommend [Visual Studio Code](https://code.visualstudio.com/) with [PlatformIO](https://platformio.org/) extension).
 * **PlatformIO**: This is a cross-platform, cross-architecture, multiple framework professional tool for embedded software development. It provides the tool chain necessary for software development including building, debugging, code-upload and many more. PlatformIO works well on all modern operating systems and supports a host of development boards including the Feathers from Adafruit. Further details about PlatformIO can be found under [platformio.org](https://platformio.org/).
-* **ICLED SDK**: The SDK currently implements several quick start examples for the Single Wire 24-bit ICLEDs.
+* **ICLED SDK**: The SDK currently implements several quick start examples for the Single Wire 24-bit and 48-bit ICLEDs.
 
 ### Installing the tools
 
@@ -26,11 +26,11 @@ Here are the salient features of the WE ICLED SDK.
 
 ### Quick start example
 
-The quick start example for the ICLED_24bit_SDK demonstrates how to configure the ICLED to display different animations. 
+The quick start example for the ICLED_24bit_SDK and ICLED_48bit_SDK demonstrates how to configure the ICLED to display different animations.
 
 1. In the quick start application, the ICLED is configured to show different test based examples. Changing the TEST Mode and re-uploading the code will change the animation on the ICLED board.
    
-2. Inside **ICLED_24bit.h**: Define the number of ICLEDs used in the circuit
+2. Inside **ICLED_24bit.h** or **ICLED_48bit.h**: Define the number of ICLEDs used in the circuit
 
 ```C
 // Define the size of the LED Array that is being used
@@ -61,7 +61,7 @@ void setup()
 }
 ```
 
-5. In the **main.cpp** file, the following test examples are available:
+5. In the **main.cpp** file, the available test examples are shown. See example for the ICLED_24bit_SDK:
    
 ```C
 void loop() {
@@ -102,7 +102,7 @@ void loop() {
 ### Running the example
 
 1. Clone or download the code.
-2. Open the workspace of interest with the filename `<ICLED_24bit_SDK>.code-workspace` in Visual Studio code.
+2. Open the workspace of interest with the filename `<ICLED_24bit_SDK>.code-workspace` or `<ICLED_48bit_SDK>.code-workspace` in Visual Studio code.
 3. **Build** and **Upload** the code from the PlatformIO tab as shown in the Figure below.
 4. After successful upload, click on **Monitor** in the PlatformIO extension tab to view the debug logs in the serial terminal.
 

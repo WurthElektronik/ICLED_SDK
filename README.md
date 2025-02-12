@@ -2,15 +2,18 @@
 
 # WE ICLED SDK
 
-[Würth Elektronik](https://www.we-online.com/en/components/products/WL-ICLED) offers a range of ICLEDs that can be controlled via the SPI interface of the a microcontroller. To facilitate quick prototyping and evaluation of these ICLEDs, Würth Elektronik provides the ICLED_24bit_SDK libraries for the **Feather M0 Express** microcontroller from [Adafruit](https://www.adafruit.com/).
+[Würth Elektronik](https://www.we-online.com/en/components/products/WL-ICLED) offers a range of ICLEDs that can be controlled via the SPI interface of a microcontroller. To facilitate quick prototyping and evaluation of these ICLEDs, Würth Elektronik provides the ICLED_SDK libraries for the **Feather M0 Express** microcontroller from [Adafruit](https://www.adafruit.com/).
 
-[Adafruit Feather](https://www.adafruit.com/feather) is a complete line of development boards from [Adafruit](https://www.adafruit.com/) and other developers that are both standalone and stackable. They're able to be powered by [LiPo batteries](https://en.wikipedia.org/wiki/Lithium_polymer_battery) for on-the-go use or by their [micro-USB](https://www.we-online.de/katalog/de/em/connectors/input_output_connectors/wr-com) or their [UBS-C](https://www.we-online.com/de/components/products/WR-COM_USB_20_TYPE_C_RECEPTACLE_HORIZONTAL_SMT) plugs for stationary projects. Feathers are flexible, portable, and as light as their namesake. At its core, the Adafruit Feather is a complete ecosystem of products - and the best way to get your project flying.
+[Adafruit Feather](https://www.adafruit.com/feather) is a complete line of development boards from [Adafruit](https://www.adafruit.com/) and other developers that are both standalone and stackable. They're able to be powered by [LiPo batteries](https://en.wikipedia.org/wiki/Lithium_polymer_battery) for on-the-go use or by their [micro-USB](https://www.we-online.de/katalog/de/em/connectors/input_output_connectors/wr-com) plugs for stationary projects. Feathers are flexible, portable, and as light as their namesake. At its core, the Adafruit Feather is a complete ecosystem of products - and the best way to get your project flying.
+
 
 # Repository Structure
 
-| Microcontroller | Subfolder | Description | 
-|  ---  |  ---  |  ---  |
-| Feather M0 Express |  ICLED_24bit_SDK |  Contains the library to control the Single Wire 24-bit ICLEDs using the SPI interface of the M0 Microcontroller. There are also some example codes in the subfolder examples to showcase both basic and advanced usages of the IC LEDs such as color setting, animations, and effects.|
+| Microcontroller | ICLED Communication Protocol | Subfolder | Supported part numbers |
+|  ---  |  ---  |  ---  |  ---  |
+| Feather M0 Express | Single Wire | ICLED_24bit_SDK | 1315050930002, 1313210530000, 1312020030000 |
+| Feather M0 Express | Single Wire | ICLED_48bit_SDK | 1312121320437 |
+
 
 ### List of Examples
 | Example Name  |  Description  |
@@ -22,17 +25,8 @@
 | ICLED_demo_Rainbow	| Creates a dynamic "rainbow effect" on an ICLED strip by cycling through colors smoothly across all pixels. |
 | ICLED_demo_TheaterChase	| Sequentially lights up every third ICLED in a repeating pattern, creating a "theater chase" effect. | 
 
-### Supported Part Numbers
-The  ICLED_24bit_SDK supports the following IC LED part numbers:
-
-| Order Code	| Chip layout | Communication Protocol | 
-| --- | --- | --- |
-| 1315050930002	| Green, Red, Blue | Single Wire (24-bit)	|
-| 1313210530000	| Green, Red, Blue | Single Wire (24-bit)	|
-| 1312020030000	| Green, Red, Blue | Single Wire (24-bit)	|
-
-
 The example projects contained in this repository have been created using the  **[Visual Studio Code](https://code.visualstudio.com/download)** using the PlatformIO extension, but other toolchains can be used if desired. The following steps will guide you through the installation process and help avoid the most common mistakes.
+
 
 ## Quick start guide
 
@@ -42,10 +36,13 @@ The example projects contained in this repository have been created using the  *
 
 1. Adafruit Feather M0. The current repository contains software developed on the [Adafruit Feather M0 express](https://www.adafruit.com/product/3403).
 
-2. ICLED Board - Select the [ICLED FeatherWing](https://www.we-online.com/en/components/products/OPTO_ICLED_FEATHERWING_2#150015) or any development board with [Würth Elektronik ICLEDs](https://www.we-online.com/en/components/products/WL-ICLED) and stack it on to the Feather. Alternatively connect the Pin 6 of the M0 to the DIN pin of the first ICLED on the development board.
+2. ICLED Board - Select any development board with [Würth Elektronik ICLEDs](https://www.we-online.com/en/components/products/WL-ICLED) and connect Pin 6 of the M0 to the DIN pin of the first ICLED on the development board.
 
-3. Stable power supply - Please ensure that the boards are powered using a clean and stable power supply. The following input options are available,
+>**Note**: For 24 Single Wire ICLEDs [Würth Elektronik](https://www.we-online.com/en/components/products/WL-ICLED) offers the [ICLED FeatherWing](https://www.we-online.com/en/components/products/OPTO_ICLED_FEATHERWING_2#150015) demoboard (ICLED PN: 1312020030000). 
+
+3. Stable power supply - Please ensure that the boards are powered using a clean and stable power supply. The following input options are available:
 - **USB** interface on the M0 Feather.
+  
 >**Note**: The USB interface will also be used to upload the example code to the microcontroller.
 
 - **LiPo** - For low power applications, it is also possible to connect a LiPo battery. Please ensure that the battery can deliver sufficient current at the desired voltage for the combination of boards used.
@@ -87,7 +84,8 @@ The PlatformIO extension will then be loaded in Visual Studio Code and its icon 
 ![Download WE Git repository](assets/DownloadGitCode.png)
 
 1. This repository contains **the following different**, **ready-to-run** applications:
-   - [Single Wire 24 bit ICLED examples](/Adafruit Feather M0 Express/Single Wire ICLEDs/ICLED_24bit_SDK/src) includes several predefined functions mentioned above to showcase the capabilities of single wire 24-bit ICLEDs. 
+   - [Single Wire 24 bit ICLED examples](https://github.com/WurthElektronik/ICLED_SDK/tree/main/Adafruit%20Feather%20M0%20Express/Single%20Wire%20ICLEDs/ICLED_24bit_SDK/lib/ICLED_24bit) includes several predefined functions mentioned above to showcase the capabilities of single wire 24-bit ICLEDs.
+   - [Single Wire 48 bit ICLED examples](https://github.com/WurthElektronik/ICLED_SDK/tree/main/Adafruit%20Feather%20M0%20Express/Single%20Wire%20ICLEDs/ICLED_48bit_SDK/lib/ICLED_48bit) includes several predefined functions mentioned above to showcase the capabilities of single wire 48-bit ICLEDs. 
 
 3. **Open workspace file** for the case you want to test.
 
