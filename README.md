@@ -13,6 +13,7 @@
 |  ---  |  ---  |  ---  |  ---  |
 | Feather M0 Express | Single Wire | ICLED_24bit_SDK | 1315050930002, 1313210530000, 1312020030000 |
 | Feather M0 Express | Single Wire | ICLED_48bit_SDK | 1312121320437 |
+| Feather M0 Express | Dual Wire | ICLED_24bit_SDK | 1315050930246, 1311610030140 |
 
 
 ### List of Examples
@@ -24,6 +25,7 @@
 | ICLED_demo_Cyclon	| Sequentially lights up the ICLEDs one at a time from left to right and then back from right to left in the given color and brightness. |
 | ICLED_demo_Rainbow	| Creates a dynamic "rainbow effect" on an ICLED strip by cycling through colors smoothly across all pixels. |
 | ICLED_demo_TheaterChase	| Sequentially lights up every third ICLED in a repeating pattern, creating a "theater chase" effect. | 
+| ICLED_demo_FadingSleep | Gradually puts ICLEDs to sleep one by one, creating a fading effect while reducing power consumption ***(Sleep modus only available for Dual Wire ICLEDs)*** |
 
 The example projects contained in this repository have been created using the  **[Visual Studio Code](https://code.visualstudio.com/download)** using the PlatformIO extension, but other toolchains can be used if desired. The following steps will guide you through the installation process and help avoid the most common mistakes.
 
@@ -36,9 +38,9 @@ The example projects contained in this repository have been created using the  *
 
 1. Adafruit Feather M0. The current repository contains software developed on the [Adafruit Feather M0 express](https://www.adafruit.com/product/3403).
 
-2. ICLED Board - Select any development board with [Würth Elektronik ICLEDs](https://www.we-online.com/en/components/products/WL-ICLED) and connect Pin 6 of the M0 to the DIN pin of the first ICLED on the development board.
+2. ICLED Board - Select any development board with [Würth Elektronik ICLEDs](https://www.we-online.com/en/components/products/WL-ICLED) and connect the DIN pin (for Single Wire ICLEDs) or the DIN and CIN pin (for Dual Wire ICLEDs) of the first ICLED on the development board to the corresponding pins on the Feather M0 controller. 
 
->**Note**: For 24 Single Wire ICLEDs [Würth Elektronik](https://www.we-online.com/en/components/products/WL-ICLED) offers the [ICLED FeatherWing](https://www.we-online.com/en/components/products/OPTO_ICLED_FEATHERWING_2#150015) demoboard (ICLED PN: 1312020030000). 
+>**Note**: For 24 Single Wire ICLEDs [Würth Elektronik](https://www.we-online.com/en/components/products/WL-ICLED) offers the [ICLED FeatherWing](https://www.we-online.com/en/components/products/OPTO_ICLED_FEATHERWING_2#150015) demoboard (ICLED PN: 1312020030000).
 
 3. Stable power supply - Please ensure that the boards are powered using a clean and stable power supply. The following input options are available:
 - **USB** interface on the M0 Feather.
@@ -85,28 +87,29 @@ The PlatformIO extension will then be loaded in Visual Studio Code and its icon 
 
 1. This repository contains **the following different**, **ready-to-run** applications:
    - [Single Wire 24 bit ICLED examples](https://github.com/WurthElektronik/ICLED_SDK/tree/main/Adafruit%20Feather%20M0%20Express/Single%20Wire%20ICLEDs/ICLED_24bit_SDK/lib/ICLED_24bit) includes several predefined functions mentioned above to showcase the capabilities of single wire 24-bit ICLEDs.
-   - [Single Wire 48 bit ICLED examples](https://github.com/WurthElektronik/ICLED_SDK/tree/main/Adafruit%20Feather%20M0%20Express/Single%20Wire%20ICLEDs/ICLED_48bit_SDK/lib/ICLED_48bit) includes several predefined functions mentioned above to showcase the capabilities of single wire 48-bit ICLEDs. 
+   - [Single Wire 48 bit ICLED examples](https://github.com/WurthElektronik/ICLED_SDK/tree/main/Adafruit%20Feather%20M0%20Express/Single%20Wire%20ICLEDs/ICLED_48bit_SDK/lib/ICLED_48bit) includes several predefined functions mentioned above to showcase the capabilities of single wire 48-bit ICLEDs.
+   - [Dual Wire 24 bit ICLED examples](https://github.com/WurthElektronik/ICLED_SDK/tree/main/Adafruit%20Feather%20M0%20Express/Dual%20Wire%20ICLEDs/ICLED_24bit_SDK/lib/ICLED_24bit) includes several predefined functions mentioned above to showcase the capabilities of dual wire 24-bit ICLEDs.
 
 3. **Open workspace file** for the case you want to test.
 
 ![Open Workspace](assets/OpenWorkspace.png)
 
-Chose the workspace you would like to work with based on your preferences.
+Chose the workspace you would like to work with based on your preferences. In this quick start guide the Single Wire ICLEDs/ICLED_24bit_SDK workspace is selected.
 
 ![Opening Workspace](assets/OpeningWorkspace.png)
 
-After selecting the workspace, the workspace will appear in your Visual Studio Code and PlatformIO will recognize it as its project. In this quick start guide we will use the ICLED_24bit_SDK workspace.
+After selecting the workspace, this will appear in your Visual Studio Code and PlatformIO will recognize it as its project. 
 
 ![Opened Workspace](assets/OpenedWorkspace.png)
 
-1. After loading the workspace, connect the set of boards you want to test to the USB port for programming.
+1. After loading the workspace, connect the set of boards to be tested to the USB port for programming.
 For that you will need a combination of at least one ICLED board and one microcontroller Feather board (for more details see picture below).
 
 ![FeatherWingMinSet](assets/FeatherM0_connect.jpg)
 
 5. Go into the PlatformIO extension and select the **PROJECT TASKS** dropdown list.
 
-6. **Build** the code using the PlatformIO extension and then **Upload** it to the microcontroller. The Upload command will also execute Build before it uploads, but doing it in two steps, first Build then Upload, you will be able to check if the code is correctly built and it prevents uploading erroneous code to the microcontroller.
+6. **Build** the code using the PlatformIO extension and then **Upload** it to the microcontroller. The upload command will also execute build before it uploads, but doing it in two steps, first Build then Upload, you will be able to check if the code is correctly built and it prevents uploading erroneous code to the microcontroller.
 
 ![UploadCode](assets/VSCode.png)
 
@@ -120,4 +123,4 @@ For that you will need a combination of at least one ICLED board and one microco
 ![FeatherM0Results](assets/ICLED_TEST5.jpg)
 
 > [!WARNING] 
-> The Adafruit Feather M0 provides ~400 mA for external devices. As en example each 1315050930002 IC LED draws ~40 mA at full brightness, allowing a theoretical maximum of 10 LEDs, though 5-6 LEDs are recommended for stability. For larger setups, use an external power source for the ICLEDs. Since the Feather M0 operates at 3.3V logic a logic level shifter is necessary for proper signal compatibility **[see VIH requirements on the ICLED datasheet](https://www.we-online.com/components/products/datasheet/1315050930002.pdf)**
+> The Adafruit Feather M0 provides ~400 mA for external devices. As en example each 1315050930002 IC LED draws ~40 mA at full brightness, allowing a theoretical maximum of 10 LEDs, though 5-6 LEDs are recommended for stability. For larger setups, use an external power source for the ICLEDs. Since the Feather M0 operates at 3.3V logic a logic level shifter is necessary for proper signal compatibility **see VIH requirements on the ICLED datasheet of the part used** (example: [1315050930002](https://www.we-online.com/components/products/datasheet/1315050930002.pdf)).
